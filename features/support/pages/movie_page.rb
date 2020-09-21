@@ -8,5 +8,7 @@ class MoviePage
     def create(title, status)
         find('input[name=title]').set title
         find('input[placeholder=Status]').click
+        find(".el-select-dropdown__item select-primary").set status
+
     end
 end
