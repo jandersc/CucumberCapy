@@ -2,7 +2,7 @@ class MoviePage #nova classe para a página Movie
     include Capybara::DSL #incluindo o capybara ao arquivo
 
     def add #metódo que clica no botão + para add um novo filme
-        find(".nc-simple-add").click
+        find(".movie-add").click
     end
 
     def create(movie) #metódo que cria um novo filme pegando os valores do arquivo YAML
