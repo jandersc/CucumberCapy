@@ -1,7 +1,6 @@
 Quando('eu faço login com {string} e {string}') do |email, password|          
     @login_page.go
     @login_page.with(email, password)
-    sleep 3 #sleep para carregar o token será removido depois
   end                                                                           
                                                                                 
 Então('devo ser autenticado') do                                              
