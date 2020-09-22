@@ -30,5 +30,17 @@ class MoviePage #nova classe para a página Movie
         #preenche o campo com a sinopse do filme 
         find('textarea[name=overview]').set movie["overview"]
 
+        #procurar o diretório onde tá a imagem e atribui a variável
+        cover_file = File.join(Dir.pwd, "features/support/fixtures/cover/" + movie["cover"])
+
+        #comando para o Capybara ingnorar os elementos desabilitados (o elemento "upcover está desabilitado")
+        Capybara.ignore_hidden_elements = false
+
+        #adiciona o arquivo ao elemento de upload de imagem 
+        attach_file('upcover', cover_file)
+        
+        #comando para voltar a considerar os elementos desabilitados.
+        Capybara.ignore_hidden_elements = true
+
     end
 end
