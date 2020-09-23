@@ -42,5 +42,12 @@ class MoviePage #nova classe para a página Movie
         #comando para voltar a considerar os elementos desabilitados.
         Capybara.ignore_hidden_elements = true
 
+        #clicar no botão cadastrar
+        find("#create-movie").click
+    end
+
+    #metódo que procura os elementos da tabela com base nos titulos
+    def movie_tr(movie)
+      find('table tbody tr', text: movie["title"])  
     end
 end

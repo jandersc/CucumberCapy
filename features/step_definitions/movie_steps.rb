@@ -10,5 +10,8 @@ Dado('que {string} é um novo filme') do |movie_code|
   end
   
   Então('devo ver o novo filme na lista') do
-    pending # Write code here that turns the phrase above into concrete actions
+    #compara se o retorno da tabela está igual ao arquivo YAML
+    resultado = @movie_page.movie_tr(@movie)
+    expect(resultado).to have_text @movie["title"]
+    expect(resultado).to have_text @movie["status"]
   end
