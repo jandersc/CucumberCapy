@@ -22,3 +22,35 @@ jocker:
   cast: ["Joaquim Phoenix"]
   overview: "O comediante falido Arthur Fleck encontra violentos bandidos pelas ruas de Gotham City"
   cover: "coringa.jpg"
+no_title:
+  title: ""
+  status: "Disponível"
+  year: 2020
+  release_date: "04/02/2020"
+  cast: []
+  overview: ""
+  cover: ""
+no_status:
+  title: "Viuva Negra"
+  status: ""
+  year: 2020
+  release_date: "04/02/2020"
+  cast: []
+  overview: ""
+  cover: ""
+no_year:
+  title: "Pantera Negra"
+  status: "Disponível"
+  year: 
+  release_date: "04/02/2020"
+  cast: []
+  overview: ""
+  cover: ""
+no_date:
+  title: "Thor"
+  status: "Disponível"
+  year: 2021
+  release_date: ""
+  cast: []
+  overview: ""
+  cover: ""
