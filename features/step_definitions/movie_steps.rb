@@ -3,11 +3,14 @@ Dado('que {string} é um novo filme') do |movie_code|
     @movie = file[movie_code] #atribui a variável o array do código
     Database.new.delete_movie(@movie["title"]) #conecta no banco e deleta os arquivos que serão executados no arquivo
 end
+
+Dado('este filme já existe no catálogo') do
+    Database.new.insert_movie(@movie)
+end
   
 Quando('eu faço o cadastro deste filme') do
     @movie_page.add #clica no botão para add um novo filme
     @movie_page.create(@movie) #chama o método create passando o filme da lista como parâmetro
-    #sleep 3
 end
   
 Então('devo ver o novo filme na lista') do

@@ -2,10 +2,23 @@
 require "pg"
 
 class Database
+
+    def initialize
+        #conecta no banco de dados e passa na variável 
+        @connection = PG.connect(host: "192.168.99.100", dbname: "ninjaflix", user: "postgres", password: "qaninja")
+    end
+
     def delete_movie(title)
-        #conecta no banco de dados
-        connection = PG.connect(host: "192.168.99.100", dbname: "ninjaflix", user: "postgres", password: "qaninja")
         #executa o script SQL
-        connection.exec("DELETE from public.movies where title = '#{title}';")  
+        @connection.exec("DELETE from public.movies where title = '#{title}';")  
+    end
+
+    def insert_movie(movie)
+        #atribui a variável o script de insert do banco de dados
+        sql_script = "INSERT INTO public.movies (title, status, year, release_date, created_at, updated_at)" \
+        " VALUES('#{movie['title']}', '#{movie['status']}', #{movie['year']}, '#{movie['release_date']}', current_timestamp, current_timestamp);"
+
+        #executa o script SQL
+        @connection.exec(sql_script)
     end
 end
