@@ -15,7 +15,7 @@ end
   
 Então('devo ver o novo filme na lista') do
     #compara se o retorno da tabela está igual ao arquivo YAML
-    resultado = @movie_page.movie_tr(@movie)
+    resultado = @movie_page.movie_tr(@movie["title"])
     expect(resultado).to have_text @movie["title"]
     expect(resultado).to have_text @movie["status"]
 end
@@ -23,4 +23,25 @@ end
 Então('devo ver a notificação {string}') do |expect_alert|
     #compara o alerta com o que foi passado na lista
     expect(@movie_page.alert).to eql expect_alert
+end
+
+Dado('que {string} está noo catálogo') do |movie_code|
+    #aproveita os steps utilizados no outro cenário de testes 
+    steps %{ 
+        Dado que "#{movie_code}" é um novo filme
+        E este filme já existe no catálogo 
+    }
+end
+  
+Quando('eu solicito a exclusão') do
+    #chama o metodo de exclusão da page object
+    @movie_page.remove(@movie["title"])
+end
+  
+Quando('eu confirmo a solicitação') do
+    @movie_page.swal2_confirm
+end
+  
+Então('este item deve ser removido do catálogo') do
+    expect(@movie_page.has_no_movie(@movie["title"])).to be true
 end

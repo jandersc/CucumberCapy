@@ -54,8 +54,22 @@ class MoviePage #nova classe para a página Movie
     end
 
     #metódo que procura os elementos da tabela com base nos titulos
-    def movie_tr(movie)
-      find('table tbody tr', text: movie["title"])  
+    def movie_tr(title)
+      find('table tbody tr', text: title)  
+    end
+
+    def remove(title)
+        #método para localizar o botão de excluir na linha que tem o titulo da pesquisa
+        movie_tr(title).find(".btn-trash").click
+    end
+
+    def swal2_confirm
+        find(".swal2-confirm").click
+    end
+
+    def has_no_movie(title)
+        #has_no_css? para confirmar se não existe mais a linha na tabela 
+        page.has_no_css?('table tbody tr', text: title)
     end
 
     def alert
