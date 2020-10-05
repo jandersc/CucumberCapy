@@ -1,0 +1,12 @@
+---
+#exemplo de arquivo para ambiente de homologação
+  url: "http://hmg.nflix.com"
+  database: 
+    host: "10.20.10.5"
+    dbname: "ninjaflix"
+    user: "postgres"
+    password: "qaninja-hmg"
+  users:
+    cat_manager:
+      email: "pepper.pots@stark.com"
+      pass: "pwd123"

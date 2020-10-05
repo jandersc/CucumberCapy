@@ -1,0 +1,7 @@
+---
+#Arquivo padrão onde define os arquivos de configuração
+#e qual qual dele é o default
+default: -p dev_toolbox
+dev: ENV_TYPE=dev
+dev_toolbox: ENV_TYPE=dev_toobox
+hmg: ENV_TYPE=hmg
