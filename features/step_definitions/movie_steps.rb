@@ -5,12 +5,12 @@ Dado('que {string} é um novo filme') do |movie_code|
 end
 
 Dado('este filme já existe no catálogo') do
-    Database.new.insert_movie(@movie)
+    Database.new.insert_movie(@movie) #garante que já tem um registro no catálogo
 end
   
 Quando('eu faço o cadastro deste filme') do
     @movie_page.add #clica no botão para add um novo filme
-    @movie_page.create(@movie) #chama o método create passando o filme da lista como parâmetro
+    @movie_page.form.create(@movie) #chama o método create passando o filme da lista como parâmetro
 end
   
 Então('devo ver o novo filme na lista') do
@@ -22,7 +22,7 @@ end
 
 Então('devo ver a notificação {string}') do |expect_alert|
     #compara o alerta com o que foi passado na lista
-    expect(@movie_page.alert).to eql expect_alert
+    expect(@movie_page.form.alert).to eql expect_alert
 end
 
 Dado('que {string} está noo catálogo') do |movie_code|
@@ -39,9 +39,17 @@ Quando('eu solicito a exclusão') do
 end
   
 Quando('eu confirmo a solicitação') do
-    @movie_page.swal2_confirm
+    @movie_page.sweet_alert.confirm #chama o método da classe sweet_alert
 end
   
 Então('este item deve ser removido do catálogo') do
-    expect(@movie_page.has_no_movie(@movie["title"])).to be true
+    expect(@movie_page.has_no_movie(@movie["title"])).to be true #verifica se na grid não existe o titulo após exclusão
+end
+
+Quando('cancelo a solicitação') do
+    @movie_page.sweet_alert.cancel #chama o método da classe sweet_alert
+end
+  
+Então('este item deve permanecer no catálogo') do
+    expect(@movie_page.has_movie(@movie["title"])).to be true #verifica se na grid existe o titulo após o cancelamento da exclusão
 end
