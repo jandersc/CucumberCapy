@@ -1,10 +1,14 @@
 ---
 #Arquivo padrão onde define os arquivos de configuração
-#e qual qual dele é o default
-default: -p dev_toolbox -p chrome
-dev: ENV_TYPE=dev
-dev_toolbox: ENV_TYPE=dev_toobox
-hmg: ENV_TYPE=hmg
-firefox: BROWSER-firefox
-chrome: BROWSER-chrome
-headless: BROWSER-headless
+#e qual dele é o default
+default: -p dev_toolbox -p chrome -p html -p pretty 
+ci: -p dev_toolbox -p chrome -p json -p pretty #arquivo json para o CI
+dev_toolbox: ENV_TYPE=dev_toolbox #executar em dev_toolbox
+hmg: ENV_TYPE=hmg #executar em homologação
+firefox: BROWSER=firefox #executar no firefox
+chrome: BROWSER=chrome #executar no chrome
+headless: BROWSER=headless #executa no headless(não abre o navegador)
+html: --format html --out=log/report.html #gerar o relatório html e salva na pasta log
+json: --format json --out=log/report.json #gerar o relatório em json
+pretty: --format pretty #para exibir o log no console detalhado
+progress: --format progress #para exibir o log no console resumido (apenas pontos de progresso)
