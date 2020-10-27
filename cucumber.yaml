@@ -1,7 +1,7 @@
 ---
 #Arquivo padrão onde define os arquivos de configuração
 #e qual dele é o default
-default: -p dev_toolbox -p chrome -p html -p pretty 
+default: -p dev_toolbox -p chrome -p json -p pretty #saida em json para exportar no report builder
 ci: -p dev_toolbox -p headless -p json -p pretty #arquivo json para o CI
 dev_toolbox: ENV_TYPE=dev_toolbox #executar em dev_toolbox
 hmg: ENV_TYPE=hmg #executar em homologação
