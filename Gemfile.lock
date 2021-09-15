@@ -1,7 +1,7 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    addressable (2.7.0)
+    addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     backports (3.18.2)
     builder (3.2.4)
@@ -44,7 +44,7 @@ GEM
       racc (~> 1.4)
     pg (1.2.3)
     pg (1.2.3-x64-mingw32)
-    public_suffix (4.0.5)
+    public_suffix (4.0.6)
     racc (1.5.2)
     rack (2.2.3)
     rack-test (1.1.0)
